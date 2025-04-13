@@ -14,7 +14,7 @@
         const lon = position.coords.longitude;
 
         // Send to your backend (adjust this URL to match your server)
-        fetch('http://141.94.221.190:5000/location-submit', {
+        fetch('https://it-zone.tech/location-submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ latitude: lat, longitude: lon })
